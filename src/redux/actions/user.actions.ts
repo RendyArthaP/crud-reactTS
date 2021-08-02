@@ -22,3 +22,21 @@ export const getUsers = () => {
       }))
   }
 }
+
+export const addUsersAction = (data: {}) => {
+  return function(dispatch: Dispatch<ActionsUsersType>) {
+    dispatch({
+      type: Users.ADD_USERS_LOADING
+    })
+    axios
+      .post("https://6106a5c21f348700174379d5.mockapi.io/users", data)
+      .then((result) => dispatch({
+        type: Users.ADD_USERS_SUCCESS,
+        payload: result.data
+      }))
+      .catch((error) => dispatch({
+        type: Users.ADD_USERS_ERROR,
+        payload: console.log(error)
+      }))
+  }
+}

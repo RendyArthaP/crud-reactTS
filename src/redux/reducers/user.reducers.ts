@@ -11,7 +11,7 @@ interface InitialStateI {
 
 const initialState: InitialStateI = {
   loading: false,
-  users: []
+  users: [],
 }
 
 const handleUsers = (state = initialState, action: ActionsUsersType):InitialStateI => {
@@ -24,12 +24,27 @@ const handleUsers = (state = initialState, action: ActionsUsersType):InitialStat
     case Users.USERS_SUCCESS:
       return {
         loading: false,
-        users: [
-          ...state.users,
-          ...action.payload
-        ]
+        users: action.payload
       }
     case Users.USERS_ERROR:
+      return {
+        ...state,
+        loading: true
+      }
+    case Users.ADD_USERS_LOADING: 
+      return {
+        ...state,
+        loading: true
+      }
+    case Users.ADD_USERS_SUCCESS:
+      return {
+        loading: false,
+        users: [
+          ...state.users,
+          action.payload
+        ]
+      }
+    case Users.ADD_USERS_ERROR:
       return {
         ...state,
         loading: true

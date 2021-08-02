@@ -5,7 +5,6 @@ interface Props {
 }
 
 const UserList = ({ data }: Props) => {
-  console.log(data);
   return (
     <div>
       <div>

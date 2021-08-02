@@ -49,6 +49,18 @@ const handleUsers = (state = initialState, action: ActionsUsersType):InitialStat
         ...state,
         loading: true
       }
+    case Users.DELETE_USERS_LOADING: 
+      return {
+        ...state,
+        loading: true
+      }
+    case Users.DELETE_USERS_SUCCESS:
+      let deleteUsers = state.users.filter((user) => user.id !== action.payload.id)
+
+      return {
+        ...state,
+        users: [...deleteUsers]
+      }
     default: 
       return state
   }

@@ -29,13 +29,31 @@ export const addUsersAction = (data: {}) => {
       type: Users.ADD_USERS_LOADING
     })
     axios
-      .post("https://6106a5c21f348700174379d5.mockapi.io/users", data)
+      .post(`${process.env.REACT_APP_USERS}`, data)
       .then((result) => dispatch({
         type: Users.ADD_USERS_SUCCESS,
         payload: result.data
       }))
       .catch((error) => dispatch({
         type: Users.ADD_USERS_ERROR,
+        payload: console.log(error)
+      }))
+  }
+}
+
+export const deleteUserAction = (id: string) => {
+  return function(dispatch: Dispatch<ActionsUsersType>) {
+    dispatch({
+      type: Users.DELETE_USERS_LOADING
+    })
+    axios
+      .delete(`${process.env.REACT_APP_USERS}/${id}`)
+      .then((result) => dispatch({
+        type: Users.DELETE_USERS_SUCCESS,
+        payload: result.data
+      }))
+      .catch((error) => dispatch({
+        type: Users.DELETE_USERS_ERROR,
         payload: console.log(error)
       }))
   }

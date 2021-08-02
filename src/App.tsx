@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { addUsersAction, getUsers } from "./redux/actions/user.actions";
+import { addUsersAction, deleteUserAction, getUsers } from "./redux/actions/user.actions";
 import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "./redux/store";
 import { UsersType } from "./redux/actions/userTypes.actions";
@@ -27,6 +27,10 @@ function App() {
   const handleSubmit = (e: any):void => {
     e.preventDefault()
     dispatch(addUsersAction(addUsers))
+  }
+
+  const deleteUsers = (id:string): void => {
+    dispatch(deleteUserAction(id))
   }
 
   useEffect(() => {
@@ -88,6 +92,7 @@ function App() {
         <UserList 
           data = {data}
           key = {key}
+          deleteUsers = {deleteUsers}
         />
       ))}
     </div>

@@ -1,10 +1,11 @@
 import { UsersType } from "../redux/actions/userTypes.actions";
 
 interface Props {
-  data: UsersType
+  data: UsersType,
+  deleteUsers(id: string): void
 }
 
-const UserList = ({ data }: Props) => {
+const UserList = ({ data, deleteUsers }: Props) => {
   return (
     <div>
       <div>
@@ -17,7 +18,7 @@ const UserList = ({ data }: Props) => {
           <button>
             Update
           </button>
-          <button>
+          <button onClick={() => deleteUsers(data.id)}>
             Delete
           </button>
         </div>

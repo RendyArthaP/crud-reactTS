@@ -58,3 +58,19 @@ export const deleteUserAction = (id: string) => {
       }))
   }
 }
+
+export const updateUserAction = (data: {} | any) => {
+  return function(dispatch: Dispatch<ActionsUsersType>) {
+    dispatch({
+      type: Users.UPDATE_USERS_LOADING
+    })
+    axios
+      .put(`${process.env.REACT_APP_USERS}/${data.id}`, data)
+      //@ts-ignore
+      .then((result) => dispatch(getUsers()))
+      .catch((error) => dispatch({
+        type: Users.UPDATE_USERS_ERROR,
+        payload: console.log(error)
+      }))
+  }
+}

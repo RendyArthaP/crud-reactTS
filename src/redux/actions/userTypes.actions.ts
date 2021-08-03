@@ -7,7 +7,9 @@ export enum Users {
   ADD_USERS_ERROR = "ADD_USERS_ERROR",
   DELETE_USERS_LOADING = "DELETE_USERS_LOADING",
   DELETE_USERS_SUCCESS = "DELETE_USERS_SUCCESS",
-  DELETE_USERS_ERROR = "DELETE_USERS_ERROR"
+  DELETE_USERS_ERROR = "DELETE_USERS_ERROR",
+  UPDATE_USERS_LOADING = "UPDATE_USERS_LOADING",
+  UPDATE_USERS_ERROR = "UPDATE_USERS_ERROR",
 }
 
 export type UsersType = {
@@ -58,6 +60,14 @@ export interface DeleteUsersError {
   type: Users.DELETE_USERS_ERROR
 }
 
+export interface UpdateUsersLoading {
+  type: Users.UPDATE_USERS_LOADING
+}
+
+export interface UpdateUsersError {
+  type: Users.UPDATE_USERS_ERROR
+}
+
 export type ActionsUsersType = 
 | UsersLoading 
 | UsersSuccess 
@@ -68,3 +78,5 @@ export type ActionsUsersType =
 | DeleteUsersLoading
 | DeleteUsersSuccess
 | DeleteUsersError
+| UpdateUsersLoading
+| UpdateUsersError

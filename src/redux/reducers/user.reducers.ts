@@ -61,6 +61,16 @@ const handleUsers = (state = initialState, action: ActionsUsersType):InitialStat
         ...state,
         users: [...deleteUsers]
       }
+    case Users.UPDATE_USERS_LOADING:
+      return {
+        ...state,
+        loading: true
+      }
+    case Users.UPDATE_USERS_ERROR:
+      return {
+        ...state,
+        loading: true
+      }
     default: 
       return state
   }

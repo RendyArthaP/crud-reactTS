@@ -59,14 +59,14 @@ export const deleteUserAction = (id: string) => {
   }
 }
 
-export const updateUserAction = (data: {} | any) => {
+export const updateUserAction = (data: {id: string}) => {
   return function(dispatch: Dispatch<ActionsUsersType>) {
     dispatch({
       type: Users.UPDATE_USERS_LOADING
     })
     axios
       .put(`${process.env.REACT_APP_USERS}/${data.id}`, data)
-      //@ts-ignore
+      // @ts-ignore
       .then((result) => dispatch(getUsers()))
       .catch((error) => dispatch({
         type: Users.UPDATE_USERS_ERROR,

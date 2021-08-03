@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { addUsersAction, deleteUserAction, getUsers, updateUserAction } from "./redux/actions/user.actions";
 import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "./redux/store";
@@ -26,7 +26,7 @@ function App() {
     })
   }
 
-  const handleSubmit = (e: any):void => {
+  const handleSubmit = (e: FormEvent):void => {
     e.preventDefault()
     if(!updateUsers) {
       dispatch(addUsersAction(addUsers))

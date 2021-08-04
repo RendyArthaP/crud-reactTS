@@ -30,6 +30,14 @@ function App() {
     e.preventDefault()
     if(!updateUsers) {
       dispatch(addUsersAction(addUsers))
+      setAddUsers({
+        id: "",
+        name: "",
+        phone: "",
+        jobs: "",
+        gender: "",
+        email: ""
+      })
     } else {
       const newUsers = {
         id: addUsers.id,
@@ -40,13 +48,15 @@ function App() {
         email: addUsers.email
       }
       dispatch(updateUserAction(newUsers));
-      // setAddUsers({
-      //   name: "",
-      //   phone: "",
-      //   jobs: "",
-      //   gender: "",
-      //   email: ""
-      // })
+      setAddUsers({
+        id: "",
+        name: "",
+        phone: "",
+        jobs: "",
+        gender: "",
+        email: ""
+      })
+      setUpdateUsers(!updateUsers)
     }
   }
 

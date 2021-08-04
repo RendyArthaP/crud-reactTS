@@ -1,6 +1,8 @@
 import axios from "axios";
 import { Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
+import { RootStore } from "../store";
+import { AnyAction } from "redux";
 import {
   Users,
   ActionsUsersType
@@ -60,7 +62,7 @@ export const deleteUserAction = (id: string) => {
   }
 }
 
-export const updateUserAction = (data: {id: string}): ThunkAction<void, {}, unknown, any> => {
+export const updateUserAction = (data: {id: string}): ThunkAction<void, RootStore, unknown, AnyAction> => {
   return function(dispatch) {
     dispatch({
       type: Users.UPDATE_USERS_LOADING

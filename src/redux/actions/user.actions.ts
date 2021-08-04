@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "redux";
+import { ThunkAction } from "redux-thunk";
 import {
   Users,
   ActionsUsersType
@@ -59,14 +60,13 @@ export const deleteUserAction = (id: string) => {
   }
 }
 
-export const updateUserAction = (data: {id: string}) => {
-  return function(dispatch: Dispatch<ActionsUsersType>) {
+export const updateUserAction = (data: {id: string}): ThunkAction<void, {}, unknown, any> => {
+  return function(dispatch) {
     dispatch({
       type: Users.UPDATE_USERS_LOADING
     })
     axios
       .put(`${process.env.REACT_APP_USERS}/${data.id}`, data)
-      // @ts-ignore
       .then((result) => dispatch(getUsers()))
       .catch((error) => dispatch({
         type: Users.UPDATE_USERS_ERROR,

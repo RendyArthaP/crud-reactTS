@@ -2,7 +2,7 @@ import {
   Users,
   UsersType,
   ActionsUsersType
-} from "../actions/userTypes.actions"
+} from "../actions/user/userTypes.actions"
 
 interface InitialStateI {
   loading: boolean,

@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { addUsersAction, deleteUserAction, getUsers, updateUserAction } from "../redux/actions/user.actions";
+import { addUsersAction, deleteUserAction, getUsers, updateUserAction } from "../redux/actions/user/user.actions";
 import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "../redux/store";
-import { UsersType } from "../redux/actions/userTypes.actions";
+import { UsersType } from "../redux/actions/user/userTypes.actions";
 import UserList from "../components/UserList";
 import Navbar from "../components/Navbar";
 

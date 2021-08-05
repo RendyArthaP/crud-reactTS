@@ -1,11 +1,16 @@
-import React, { useState, ChangeEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, ChangeEvent, FormEvent } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { RegisterAction } from '../redux/actions/auth/auth.action'
+import { useDispatch } from 'react-redux'
 
 const Register = () => {
+  const history = useHistory()
+  const dispatch = useDispatch()
   const [register, setRegister] = useState({
-    username: "",
+    name: "",
     email: "",
-    password: ""
+    password: "",
+    alamat: ""
   })
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -14,19 +19,25 @@ const Register = () => {
       [e.target.name]: e.target.value
     })
   }
+  
+  const handleRegister = (e: FormEvent): void => {
+    e.preventDefault()
+    dispatch(RegisterAction(register, history))
+  }
 
   return (
     <div>
       <h1>
         Register
       </h1>
-      <form>
+      <form onSubmit={handleRegister}>
         <div>
-          <p>Username</p>
+          <p>name</p>
           <input 
-            value={register.username}
-            name="username"
+            value={register.name}
+            name="name"
             onChange={handleChange}
+            type="text"
           />
         </div>
         <div>
@@ -35,6 +46,7 @@ const Register = () => {
             value={register.email}
             name="email"
             onChange={handleChange}
+            type="email"
           />
         </div>
         <div>
@@ -43,9 +55,19 @@ const Register = () => {
             value={register.password}
             name="password"
             onChange={handleChange}
+            type="password"
           />
         </div>
-        <button>
+        <div>
+          <p>Alamat</p>
+          <input 
+            value={register.alamat}
+            name="alamat"
+            onChange={handleChange}
+            type="text"
+          />
+        </div>
+        <button type="submit">
           Register
         </button>
       </form>

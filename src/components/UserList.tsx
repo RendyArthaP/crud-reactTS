@@ -1,4 +1,4 @@
-import { UsersType } from "../redux/actions/userTypes.actions";
+import { UsersType } from "../redux/actions/user/userTypes.actions";
 
 interface Props {
   data: UsersType,
